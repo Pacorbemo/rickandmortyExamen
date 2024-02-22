@@ -21,6 +21,7 @@ router.get("/:id", async function (req, res, next) {
 
     try {
         let personaje = await Personaje.find({ id: id });
+        personaje.length === 0 ? res.redirect("/todos") : false;
         personaje = personaje[0];
         switch (personaje.gender) {
             case "Male":
